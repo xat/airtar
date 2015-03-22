@@ -8,7 +8,7 @@ on the receiver-side. On top it adds some sugar like displaying the transfer rat
 ### usage on the sender side:
 
 ```
-// by default airput transfers all files in the current directory
+// by default airtar transfers all files in the current directory
 airtar
 
 // this does the same
