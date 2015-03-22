@@ -8,9 +8,15 @@ var utils = require('./utils')
 var log = require('single-line-log').stdout
 var measure = utils.measureThroughput()
 var prettysize = require('prettysize')
+var isAbsolute = require('absolute-path')
 
 if (opts.help) {
   console.log('Usage: airtar [--namespace <name>] [<source>, <source>, ...]')
+  process.exit()
+}
+
+if (source.filter(isAbsolute).length) {
+  console.warn('Absolute paths are not allowed.')
   process.exit()
 }
 
