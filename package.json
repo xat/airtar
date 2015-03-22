@@ -1,6 +1,6 @@
 {
   "name": "airtar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "send files over the local network using airpaste and tar",
   "main": "",
   "bin": {
@@ -8,8 +8,8 @@
     "airuntar": "./airuntar.js"
   },
   "repository": {
-   "type": "git",
-   "url": "git@github.com:xat/airtar.git"
+    "type": "git",
+    "url": "git@github.com:xat/airtar.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,6 +20,7 @@
     "airpaste": "^1.0.8",
     "minimist": "^1.1.1",
     "prettysize": "0.0.3",
-    "single-line-log": "^0.4.1"
+    "single-line-log": "^0.4.1",
+    "through2": "^0.6.3"
   }
 }
