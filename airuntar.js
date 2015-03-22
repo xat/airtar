@@ -10,7 +10,8 @@ var measure = utils.measureThroughput()
 var prettysize = require('prettysize')
 
 if (opts.help) {
-  return console.log('Usage: airuntar [--namespace <name>] [<target>]')
+  console.log('Usage: airuntar [--namespace <name>] [<target>]')
+  process.exit()
 }
 
 stream.pipe(measure.getStream()).pipe(spawn('tar', ['x', '-C', target]).stdin)
