@@ -1,0 +1,25 @@
+{
+  "name": "airtar",
+  "version": "1.0.0",
+  "description": "send files over the local network using airpaste and tar",
+  "main": "",
+  "bin": {
+    "airtar": "./airtar.js",
+    "airuntar": "./airuntar.js"
+  },
+  "repository": {
+   "type": "git",
+   "url": "git@github.com:xat/airtar.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simon Kusterer",
+  "license": "MIT",
+  "dependencies": {
+    "airpaste": "^1.0.8",
+    "minimist": "^1.1.1",
+    "prettysize": "0.0.3",
+    "single-line-log": "^0.4.1"
+  }
+}
