@@ -24,7 +24,6 @@
     "prettysize": "0.0.3",
     "single-line-log": "^0.4.1",
     "tar-fs": "^1.5.0",
-    "tar-stream": "^1.1.2",
     "through2": "^0.6.3"
   }
 }
