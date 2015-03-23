@@ -1,6 +1,6 @@
 # airtar
 
-airtar is a tiny wrapper around [airpaste](https://github.com/mafintosh/airpaste) and tar. It can be used
+airtar is a tiny wrapper around [airpaste](https://github.com/mafintosh/airpaste) and [tar-fs](https://github.com/mafintosh/tar-fs). It can be used
 to send multiple files within your local network without knowing the IP or hostname of the receiver.
 Basicly it does the same as calling `tar c . | airpaste` on the sender-side and `airpaste | tar x`
 on the receiver-side. On top it adds some sugar like displaying the transfer rate.
@@ -8,10 +8,7 @@ on the receiver-side. On top it adds some sugar like displaying the transfer rat
 ### usage on the sender side:
 
 ```
-// by default airtar transfers all files in the current directory
-airtar
-
-// this does the same
+// transfer the files from the current directory
 airtar .
 
 // but you can also choose which files and directories you want to transfer
@@ -21,22 +18,29 @@ airtar file1.txt file2.txt
 airtar *.js
 
 // call airpaste with a namespace
-airtar --namespace foo
+airtar --namespace foo .
 ```
 
 ### usage on the receiver side:
 
 ```
 // receive files and save them in the current directory
-// NOTICE: existing files with the same name will silently be overwritten
-airuntar
+airuntar .
 
 // or define a target dir
 airuntar ./target
 
-// or use a namespace
-airuntar --namespace foo
+// ...use a namespace
+airuntar --namespace foo .
+
+// explicity overwrite existing files
+airuntar --overwrite .
 ```
+
+### security notice
+
+`airtar` is meant to be run in a trusted network. The transfered data is not crypted in
+anyway and you won't be able to verify who sent it.
 
 ### installation
 
