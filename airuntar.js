@@ -1,25 +1,25 @@
 #!/usr/bin/env node
 
-var opts = require('minimist')(process.argv.slice(2))
+var opts = require('minimist')(process.argv.slice(2), { boolean: 'overwrite' })
 var utils = require('./utils')
 var log = require('single-line-log').stdout
 var measure = utils.measureThroughput()
 var prettysize = require('prettysize')
 var airpaste = require('airpaste')
-var isAbsolute = require('absolute-path')
 var tarfs = require('tar-fs')
+var fs = require('fs')
 var stream
 
 if (opts.help || !opts._.length) {
-  console.log('Usage: airuntar [--namespace <name>] <target>')
+  console.log('Usage: airuntar [--namespace <name>] [--overwrite] <target>')
   process.exit()
 }
 
 stream = airpaste(opts.namespace)
 
 var ignore = function (name) {
-  if (isAbsolute(name)) {
-    console.log('ignoring absolute path: ' + name)
+  if (!opts.overwrite && fs.existsSync(name) && fs.statSync(name).isFile()) {
+    console.log('file already exists: ' + name)
     return true
   }
   return false
