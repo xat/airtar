@@ -3,7 +3,7 @@ var through2 = require('through2')
 var measureThroughput = function () {
   var transfered = 0
   var throughput = 0
-  var min = 100000 // 100 KB
+  var min = 1000000 // 1 mb
   var startTime
 
   var stream = through2(function (chunk, enc, next) {
