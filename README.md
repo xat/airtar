@@ -18,23 +18,23 @@ airtar file1.txt file2.txt
 airtar *.js
 
 // call airpaste with a namespace
-airtar --namespace foo .
+airtar -n foo .
 ```
 
 ### usage on the receiver side:
 
 ```
 // receive files and save them in the current directory
-airuntar .
+airtar -r .
 
 // or define a target dir
-airuntar ./target
+airtar -r ./target
 
 // ...use a namespace
-airuntar --namespace foo .
+airtar -r -n foo .
 
 // explicity overwrite existing files
-airuntar --overwrite .
+airtar -r -o .
 ```
 
 ### security notice
