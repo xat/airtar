@@ -27,6 +27,9 @@ airtar -n foo .
 // receive files and save them in the current directory
 airtar -r .
 
+// shortcut for 'airtar -r .'
+airtar
+
 // or define a target dir
 airtar -r ./target
 
