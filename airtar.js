@@ -16,10 +16,10 @@ var cwd = process.cwd()
 var dots = circulate(['.', '..', '...', '...'])
 
 var opts = minimist(process.argv.slice(2), {
-  boolean: ['r', 'o']
+  boolean: ['r', 'o', 'help', 'h', '?']
 })
 
-if (opts.help || opts.h || opts['?'] || opts._[0] && opts._[0] === 'help') {
+if (opts.help || opts.h || opts['?']) {
   console.log([
     '',
     'Usage',
