@@ -118,7 +118,7 @@ var receive = function () {
   }
 
   var dir = opts._[0] || process.cwd()
-  var found = wait('waiting for sender', dir  )
+  var found = wait('waiting for sender', dir)
   var count = counter()
   var target = tarfs.extract(dir, { ignore: ignore, mapStream: measure })
 
