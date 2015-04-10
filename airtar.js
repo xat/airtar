@@ -19,17 +19,18 @@ var opts = minimist(process.argv.slice(2), {
   boolean: ['r', 'o']
 })
 
-if (opts.help || !opts._.length) {
+if (opts.help || opts.h || opts['?'] || opts._[0] && opts._[0] === 'help') {
   console.log([
     '',
     'Usage',
     '  Send    : airtar [-n <name>] <source> [<source>, ...]',
-    '  Receive : airtar -r [-n <name>] [-o] <target>',
+    '  Receive : airtar [-r] [-n <name>] [-o] [<target>]',
     '',
     'Option     Meaning',
-    '-r         receive a file',
+    '-r         receive a file (defaults true if no args are specified)',
     '-n <name>  define a namespace',
     '-o         overwrite existing files',
+    '-h         view usage',
     ''
   ].join('\n'))
   process.exit()
@@ -116,9 +117,10 @@ var receive = function () {
     return false
   }
 
-  var found = wait('waiting for sender')
+  var dir = opts._[0] || process.cwd()
+  var found = wait('waiting for sender', dir  )
   var count = counter()
-  var target = tarfs.extract(opts._[0], { ignore: ignore, mapStream: measure })
+  var target = tarfs.extract(dir, { ignore: ignore, mapStream: measure })
 
   stream.once('uncork', function () {
     found()
@@ -136,6 +138,8 @@ process.on('uncaughtException', function () {
   log('')
   console.log(chalk.red('oooops, something went wrong'))
 })
+
+if (opts._.length === 0) opts.r = true
 
 if (!opts.r) {
   send()
