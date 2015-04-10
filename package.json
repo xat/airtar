@@ -1,6 +1,6 @@
 {
   "name": "airtar",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "send files over the local network using airpaste and tar",
   "main": "",
   "bin": {
